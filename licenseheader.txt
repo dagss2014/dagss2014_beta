@@ -1,0 +1,7 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+Proyecto Java EE, DAGSS-2014/15
+<#if licenseLast??>
+${licenseLast}
+</#if>

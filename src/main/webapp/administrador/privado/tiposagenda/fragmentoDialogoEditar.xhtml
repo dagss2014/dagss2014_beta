@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition>
+        <p:dialog id="dialogoEditar" widgetVar="DialogoEditar" modal="true" resizable="false" appendTo="@(body)" header="Editar Centro de Salud">
+            <h:form id="formularioEditar">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gestionTiposAgendaControlador.tipoAgendaActual != null}">
+                        <h:outputLabel value="ID:" for="id"/>
+                        <h:outputText id="id" value="#{gestionTiposAgendaControlador.tipoAgendaActual.id}" />
+
+                        <h:outputLabel value="Descripción:" for="descripcion"/>
+                        <h:inputText id="descripcion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.descripcion}" required="true"/>
+
+                        <h:outputLabel value="Tipo turno:" for="tipo"/>
+                        <p:selectOneMenu value="#{gestionTiposAgendaControlador.tipoAgendaActual.tipoTurno}">                
+                            <f:selectItems var="itemTipoTurno" value="#{gestionTiposAgendaControlador.tiposTurno}"
+                                           itemValue="#{itemTipoTurno}" itemLabel="#{itemTipoTurno.etiqueta}" />
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="Hora inicio:" for="horainicio"/>
+                        <h:inputText id="horainicio" value="#{gestionTiposAgendaControlador.tipoAgendaActual.horaInico}" required="true">
+                            <f:convertDateTime for="horainicio" pattern="HH:mm"/>
+                        </h:inputText>
+
+                        <h:outputLabel value="Hora fin:" for="horafin"/>
+                        <h:inputText id="horafin" value="#{gestionTiposAgendaControlador.tipoAgendaActual.horaFin}" required="true">
+                            <f:convertDateTime for="horafin" pattern="HH:mm"/>
+                        </h:inputText>
+
+                        <h:outputLabel value="Duración cita:" for="duracion"/>
+                        <h:inputText id="duracion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.duracionCita}" required="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Guardar" actionListener="#{gestionCentrosSaludControlador.doGuardarEditado()}"  
+                                     update="display,:formularioListado:tablaListado,:mensajes" 
+                                     oncomplete="PF('DialogoEditar').hide()"/>
+                    <p:commandButton value="Cancelar" onclick="PF('DialogoEditar').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
+

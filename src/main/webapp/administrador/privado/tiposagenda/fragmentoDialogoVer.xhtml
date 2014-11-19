@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <ui:composition>
+
+        <p:dialog id="dialogoVer" widgetVar="DialogoVer" modal="true" resizable="false" appendTo="@(body)" header="Datos Centro de Salud">
+            <h:form id="formularioVer">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{gestionTiposAgendaControlador.tipoAgendaActual != null}">
+                        <h:outputLabel value="ID:" for="id"/>
+                        <h:outputText id="id" value="#{gestionTiposAgendaControlador.tipoAgendaActual.id}" />
+
+                        <h:outputLabel value="Descripción:" for="descripcion"/>
+                        <h:outputText id="descripcion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.descripcion}"/>
+
+                        <h:outputLabel value="Tipo turno:" for="tipo"/>
+                        <h:outputText value="#{gestionTiposAgendaControlador.tipoAgendaActual.tipoTurno.etiqueta}"/>
+
+                        <h:outputLabel value="Hora inicio:" for="horainicio"/>
+                        <h:outputText id="horainicio" value="#{gestionTiposAgendaControlador.tipoAgendaActual.horaInico}">
+                            <f:convertDateTime for="horainicio" pattern="HH:mm"/>
+                        </h:outputText>
+
+                        <h:outputLabel value="Hora fin:" for="horafin"/>
+                        <h:outputText id="horafin" value="#{gestionTiposAgendaControlador.tipoAgendaActual.horaFin}">
+                            <f:convertDateTime for="horafin" pattern="HH:mm"/>
+                        </h:outputText>
+
+                        <h:outputLabel value="Duración cita:" for="duracion"/>
+                        <h:outputText id="duracion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.duracionCita}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Cerrar" onclick="PF('DialogoVer').hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+    </ui:composition>
+</html>
+
