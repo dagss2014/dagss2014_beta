@@ -20,10 +20,12 @@
             </div>
             <div id="cuerpo">
                 <div id="izquierda">
+                    <ui:remove>
                     <h:form rendered="#{autenticacionControlador.usuarioAutenticado}"> 
                         <h:commandLink value="Desconectar" 
                                        action="#{autenticacionControlador.doLogOut()}"/>
                     </h:form>
+                    </ui:remove>
                     
                     <ui:insert name="izquierda"/>
                 </div>

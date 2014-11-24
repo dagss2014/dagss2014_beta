@@ -5,6 +5,7 @@ package es.uvigo.esei.dagss.controladores.farmacia;
 
 import es.uvigo.esei.dagss.controladores.autenticacion.AutenticacionControlador;
 import es.uvigo.esei.dagss.dominio.daos.FarmaciaDAO;
+import es.uvigo.esei.dagss.dominio.daos.UsuarioDAO;
 import es.uvigo.esei.dagss.dominio.entidades.Farmacia;
 import es.uvigo.esei.dagss.dominio.entidades.TipoUsuario;
 import javax.inject.Named;
@@ -14,6 +15,7 @@ import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+
 
 /**
  *
@@ -26,12 +28,16 @@ public class FarmaciaControlador implements Serializable {
     private Farmacia farmaciaActual;
     private String nif;
     private String password;
+    
 
     @Inject
     private AutenticacionControlador autenticacionControlador;
 
     @EJB
     private FarmaciaDAO farmaciaDAO;
+    
+    @EJB
+    private UsuarioDAO usuarioDAO;
 
     /**
      * Creates a new instance of AdministradorControlador
@@ -88,4 +94,25 @@ public class FarmaciaControlador implements Serializable {
         }
         return destino;
     }
+    
+     public String doCancelar() {
+      return "index";
+    }
+     
+     public String doGuardar() {
+         if (!farmaciaActual.getPassword().equals("")){
+             farmaciaDAO.actualizar(farmaciaActual);
+             usuarioDAO.actualizarPassword(farmaciaActual.getId(), 
+                farmaciaActual.getPassword());
+             
+         }else {
+             farmaciaDAO.actualizar(farmaciaActual);
+         }
+         
+         return "index";
+     }
+     
+     
+    
+    
 }

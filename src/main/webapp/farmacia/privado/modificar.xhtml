@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/plantillas/plantillaGlobal.xhtml">
+
+            <ui:define name="tituloPagina">
+                Editar farmacia
+            </ui:define>
+
+            <ui:define name="izquierda">
+                <ui:include src="/farmacia/plantillas/menuFarmacia.xhtml"/>
+            </ui:define>
+
+            <ui:define name="contenido">
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="Nombre (*):" for="nombreFarmacia" />
+                        <h:inputText id="nombre" value="#{farmaciaControlador.farmaciaActual.nombreFarmacia}" title="Nombre" required="true" requiredMessage="Debe introducirse un nombre de farmacia"/>
+                        <h:message for="nombreFarmacia"/>
+                        
+                        <h:outputLabel value="Localidad (*):" for="localidad" />
+                        <h:inputText id="localidad" value="#{farmaciaControlador.farmaciaActual.direccion.localidad}" title="Localidad" required="true" requiredMessage="Debe introducirse una localidad de farmacia"/>
+                        <h:message for="localidad"/>
+                        
+                        <h:outputLabel value="Código Postal (*):" for="codPostal" />
+                        <h:inputText id="codpostal" value="#{farmaciaControlador.farmaciaActual.direccion.codigoPostal}" title="Código Postal" required="true" requiredMessage="Debe introducirse un código postal de farmacia"/>
+                        <h:message for="codPostal"/>
+                        
+                         <h:outputLabel value="Provincia (*):" for="provincia" />
+                         <h:inputText id="provincia" value="#{farmaciaControlador.farmaciaActual.direccion.provincia}" title="Provincia" required="true" requiredMessage="Debe introducirse una provincia de farmacia"/>
+                        <h:message for="provincia"/>
+                        
+                         <h:outputLabel value="Domicilio (*):" for="domicilio" />
+                         <h:inputText id="domicilio" value="#{farmaciaControlador.farmaciaActual.direccion.domicilio}" title="Domicilio" required="true" requiredMessage="Debe introducirse un domicilio de farmacia"/>
+                        <h:message for="domicilio"/>
+                        
+                        <h:outputLabel value="Nif (*):" for="nif" />
+                        <h:inputText id="nif" value="#{farmaciaControlador.farmaciaActual.nif}" title="nif" required="true" requiredMessage="Debe introducirse un nif de farmacia"/>
+                        <h:message for="nif"/>
+                        
+                         <h:outputLabel value="Password (*):" for="password" />
+                         <h:inputSecret id="password"  value="#{farmaciaControlador.farmaciaActual.password}" title="Password"/>
+                        <h:message for="password"/>
+
+                       
+
+                    </h:panelGrid>
+                    <h:commandButton value="Guardar" action="#{farmaciaControlador.doGuardar()}"/>
+                    <h:commandButton value="Cancelar" immediate="true" action="#{farmaciaControlador.doCancelar()}"/>
+                </h:form>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

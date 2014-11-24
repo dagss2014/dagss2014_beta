@@ -115,7 +115,7 @@ public class GestionAdministradoresControlador implements Serializable {
         if ((administradores != null) && (!administradores.isEmpty())) {
             administradorEnEdicion = administradores.get(0);
         }
-        return "listaAdminsitradores";
+        return "listadoAdministradores";
     }
 
     

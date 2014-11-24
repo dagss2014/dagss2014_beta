@@ -12,9 +12,6 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{gestionTiposAgendaControlador.tipoAgendaActual != null}">
                         <h:outputLabel value="Descripción:" for="descripcion"/>
-                        <h:outputText id="descripcion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.descripcion}"/>
-                        
-                        <h:outputLabel value="Descripción:" for="descripcion"/>
                         <h:inputText id="descripcion" value="#{gestionTiposAgendaControlador.tipoAgendaActual.descripcion}" required="true"/>
 
                         <h:outputLabel value="Tipo turno:" for="tipo"/>
