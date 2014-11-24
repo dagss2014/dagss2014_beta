@@ -5,6 +5,7 @@ package es.uvigo.esei.dagss.controladores.paciente;
 
 import es.uvigo.esei.dagss.controladores.autenticacion.AutenticacionControlador;
 import es.uvigo.esei.dagss.dominio.daos.PacienteDAO;
+import es.uvigo.esei.dagss.dominio.daos.UsuarioDAO;
 import es.uvigo.esei.dagss.dominio.entidades.Paciente;
 import es.uvigo.esei.dagss.dominio.entidades.TipoUsuario;
 import javax.inject.Named;
@@ -35,6 +36,9 @@ public class PacienteControlador implements Serializable {
 
     @EJB
     private PacienteDAO pacienteDAO;
+    
+    @EJB
+    private UsuarioDAO usuarioDAO;
 
     /**
      * Creates a new instance of AdministradorControlador
@@ -134,4 +138,22 @@ public class PacienteControlador implements Serializable {
         }
         return destino;
     }
+    
+      public String doCancelar() {
+      return "index";
+    }
+     
+     public String doGuardar() {
+         if (!pacienteActual.getPassword().equals("")){
+             pacienteDAO.actualizar(pacienteActual);
+             usuarioDAO.actualizarPassword(pacienteActual.getId(), 
+                pacienteActual.getPassword());
+             
+         }else {
+             pacienteDAO.actualizar(pacienteActual);
+         }
+         
+         return "index";
+     }
+     
 }
