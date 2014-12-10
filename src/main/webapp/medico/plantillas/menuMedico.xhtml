@@ -7,7 +7,7 @@
     <ui:composition>
         <h:form>
             <p:menu>
-                <p:menuitem value="Inicio" outcome="/paciente/privado/index" icon="ui-icon-home"/>
+                <p:menuitem value="Inicio" outcome="/medico/privado/index" icon="ui-icon-home"/>
             
                 <p:menuitem rendered="#{autenticacionControlador.usuarioAutenticado}"
                         value="Desconectar" 
@@ -16,9 +16,9 @@
                 
                 <p:submenu label="Gestión de perfil">
                     <p:menuitem value="Modificar datos"
-                                outcome="/paciente/privado/modificar.xhtml"/>
+                                outcome="/medico/privado/modificar.xhtml"/>
                 </p:submenu>
-  
+
             </p:menu>
 
         </h:form>

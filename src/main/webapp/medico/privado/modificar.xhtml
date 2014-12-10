@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="/plantillas/plantillaGlobal.xhtml">
+
+            <ui:define name="tituloPagina">
+                Editar médico
+            </ui:define>
+
+            <ui:define name="izquierda">
+                <ui:include src="/medico/plantillas/menuMedico.xhtml"/>
+            </ui:define>
+
+            <ui:define name="contenido">
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="Nombre (*):" for="nombre" />
+                        <h:inputText id="nombre" value="#{medicoControlador.medicoActual.nombre}" title="Nombre" required="true" requiredMessage="Debe introducirse un nombre de medico"/>
+                        <h:message for="nombre"/>
+                        
+                        <h:outputLabel value="Apellidos (*):" for="apellidos" />
+                        <h:inputText id="apellidos" value="#{medicoControlador.medicoActual.apellidos}" title="Apellidos" required="true" requiredMessage="Debe introducirse un apellido de medico"/>
+                        <h:message for="apellidos"/>
+                        
+                        <h:outputLabel value="Email (*):" for="email" />
+                        <h:inputText id="email" value="#{medicoControlador.medicoActual.email}" title="email" required="true" requiredMessage="Debe introducirse un email de medico"/>
+                        <h:message for="email"/>
+                        
+                        <h:outputLabel value="Teléfono (*):" for="telefono" />
+                        <h:inputText id="telefono" value="#{medicoControlador.medicoActual.telefono}" title="Telefono" required="true" requiredMessage="Debe introducirse un teléfono de medico"/>
+                        <h:message for="telefono"/>
+                        
+                        <h:outputLabel value="Password (*):" for="password" />
+                        <h:inputSecret id="password"  value="#{medicoControlador.medicoActual.password}" title="Password"/>
+                        <h:message for="password"/>
+
+                    </h:panelGrid>
+                    <h:commandButton value="Guardar" action="#{medicoControlador.doGuardar()}"/>
+                    <h:commandButton value="Cancelar" immediate="true" action="#{medicoControlador.doCancelar()}"/>
+                </h:form>
+
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

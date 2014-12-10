@@ -8,6 +8,7 @@ import es.uvigo.esei.dagss.dominio.daos.FarmaciaDAO;
 import es.uvigo.esei.dagss.dominio.daos.UsuarioDAO;
 import es.uvigo.esei.dagss.dominio.entidades.Farmacia;
 import es.uvigo.esei.dagss.dominio.entidades.TipoUsuario;
+import es.uvigo.esei.dagss.dominio.entidades.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -101,12 +102,15 @@ public class FarmaciaControlador implements Serializable {
      
      public String doGuardar() {
          if (!farmaciaActual.getPassword().equals("")){
-             farmaciaDAO.actualizar(farmaciaActual);
+             farmaciaActual = farmaciaDAO.actualizar(farmaciaActual);
              usuarioDAO.actualizarPassword(farmaciaActual.getId(), 
                 farmaciaActual.getPassword());
+            farmaciaActual = farmaciaDAO.buscarPorNIF(nif);
              
          }else {
-             farmaciaDAO.actualizar(farmaciaActual);
+             String passAntigua = farmaciaDAO.buscarPorNIF(nif).getPassword();
+             farmaciaActual.setPassword(passAntigua);
+             farmaciaActual = farmaciaDAO.actualizar(farmaciaActual);
          }
          
          return "index";

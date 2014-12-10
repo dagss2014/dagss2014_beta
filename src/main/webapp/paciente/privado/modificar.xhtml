@@ -33,7 +33,7 @@
                         <h:message for="localidad"/>
                         
                         <h:outputLabel value="Código Postal (*):" for="codPostal" />
-                        <h:inputText id="codpostal" value="#{pacienteControlador.pacienteActual.direccion.codigoPostal}" title="Código Postal" required="true" requiredMessage="Debe introducirse un código postal de paciente"/>
+                        <h:inputText id="codPostal" value="#{pacienteControlador.pacienteActual.direccion.codigoPostal}" title="Código Postal" required="true" requiredMessage="Debe introducirse un código postal de paciente"/>
                         <h:message for="codPostal"/>
                         
                          <h:outputLabel value="Provincia (*):" for="provincia" />
@@ -51,14 +51,10 @@
                         <h:outputLabel value="Email (*):" for="email" />
                         <h:inputText id="email" value="#{pacienteControlador.pacienteActual.email}" title="Email" required="true" requiredMessage="Debe introducirse un email de paciente"/>
                         <h:message for="email"/>
-                   
-                      
-                        
+                                                            
                          <h:outputLabel value="Password (*):" for="password" />
                          <h:inputSecret id="password"  value="#{pacienteControlador.pacienteActual.password}" title="Password"/>
                         <h:message for="password"/>
-
-                       
 
                     </h:panelGrid>
                     <h:commandButton value="Guardar" action="#{pacienteControlador.doGuardar()}"/>

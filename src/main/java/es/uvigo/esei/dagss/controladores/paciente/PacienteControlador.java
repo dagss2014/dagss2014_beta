@@ -145,12 +145,14 @@ public class PacienteControlador implements Serializable {
      
      public String doGuardar() {
          if (!pacienteActual.getPassword().equals("")){
-             pacienteDAO.actualizar(pacienteActual);
+             pacienteActual = pacienteDAO.actualizar(pacienteActual);
              usuarioDAO.actualizarPassword(pacienteActual.getId(), 
                 pacienteActual.getPassword());
-             
+             pacienteActual = recuperarDatosPaciente();
          }else {
-             pacienteDAO.actualizar(pacienteActual);
+             String passAntigua = recuperarDatosPaciente().getPassword();
+             pacienteActual.setPassword(passAntigua);
+             pacienteActual = pacienteDAO.actualizar(pacienteActual);
          }
          
          return "index";
