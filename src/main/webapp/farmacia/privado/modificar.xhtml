@@ -21,7 +21,7 @@
                 <h:form>
                     <h:panelGrid columns="3">
                         <h:outputLabel value="Nombre (*):" for="nombreFarmacia" />
-                        <h:inputText id="nombre" value="#{farmaciaControlador.farmaciaActual.nombreFarmacia}" title="Nombre" required="true" requiredMessage="Debe introducirse un nombre de farmacia"/>
+                        <h:inputText id="nombreFarmacia" value="#{farmaciaControlador.farmaciaActual.nombreFarmacia}" title="Nombre" required="true" requiredMessage="Debe introducirse un nombre de farmacia"/>
                         <h:message for="nombreFarmacia"/>
                         
                         <h:outputLabel value="Localidad (*):" for="localidad" />
@@ -29,7 +29,7 @@
                         <h:message for="localidad"/>
                         
                         <h:outputLabel value="Código Postal (*):" for="codPostal" />
-                        <h:inputText id="codpostal" value="#{farmaciaControlador.farmaciaActual.direccion.codigoPostal}" title="Código Postal" required="true" requiredMessage="Debe introducirse un código postal de farmacia"/>
+                        <h:inputText id="codPostal" value="#{farmaciaControlador.farmaciaActual.direccion.codigoPostal}" title="Código Postal" required="true" requiredMessage="Debe introducirse un código postal de farmacia"/>
                         <h:message for="codPostal"/>
                         
                          <h:outputLabel value="Provincia (*):" for="provincia" />

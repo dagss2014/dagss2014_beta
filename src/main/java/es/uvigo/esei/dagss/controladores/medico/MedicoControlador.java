@@ -4,14 +4,16 @@
 package es.uvigo.esei.dagss.controladores.medico;
 
 import es.uvigo.esei.dagss.controladores.autenticacion.AutenticacionControlador;
-import es.uvigo.esei.dagss.dominio.daos.CitaDAO;
 import es.uvigo.esei.dagss.dominio.daos.MedicoDAO;
+import es.uvigo.esei.dagss.dominio.daos.TratamientoDAO;
 import es.uvigo.esei.dagss.dominio.daos.UsuarioDAO;
 import es.uvigo.esei.dagss.dominio.entidades.Medico;
 import es.uvigo.esei.dagss.dominio.entidades.TipoUsuario;
+import es.uvigo.esei.dagss.dominio.entidades.Tratamiento;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -29,11 +31,13 @@ public class MedicoControlador implements Serializable {
     private String dni;
     private String numeroColegiado;
     private String password;
+    private Tratamiento tratamientoActual;
+    private List<Tratamiento> tratamientos;
 
     @Inject
     private AutenticacionControlador autenticacionControlador;
     @Inject
-    private CitaDAO citaDAO;
+    private TratamientoDAO tratamientoDAO;
 
     @EJB
     private MedicoDAO medicoDAO;
@@ -44,6 +48,10 @@ public class MedicoControlador implements Serializable {
      * Creates a new instance of AdministradorControlador
      */
     public MedicoControlador() {
+    }
+    
+    public void inicializar() {
+        tratamientos = tratamientoDAO.buscarPorMedico(medicoActual.getId());
     }
 
     public String getDni() {
@@ -74,6 +82,22 @@ public class MedicoControlador implements Serializable {
         return medicoActual;
     }
 
+    public Tratamiento getTratamientoActual() {
+        return tratamientoActual;
+    }
+
+    public void setTratamientoActual(Tratamiento tratamientoActual) {
+        this.tratamientoActual = tratamientoActual;
+    }
+
+    public List<Tratamiento> getTratamientos() {
+        return tratamientos;
+    }
+
+    public void setTratamientos(List<Tratamiento> tratamientos) {
+        this.tratamientos = tratamientos;
+    }
+    
     public void setMedicoActual(Medico medicoActual) {
         this.medicoActual = medicoActual;
     }
@@ -138,5 +162,10 @@ public class MedicoControlador implements Serializable {
          
          return "index";
      }
+     
+     public void doEliminar() {
+        tratamientoDAO.eliminar(tratamientoActual);
+        tratamientos = tratamientoDAO.buscarPorMedico(medicoActual.getId());
+    }
     
 }

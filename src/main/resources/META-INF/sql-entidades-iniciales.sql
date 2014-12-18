@@ -11,8 +11,12 @@ INSERT INTO `PACIENTE` VALUES (3,'Benito Carmona','22222222B','b@b.com','2013-11
 
 -- Cita con fecha "2014-01-15" y hora "09:00:00"
 INSERT INTO `CITA` VALUES (1, '15', 'PLANIFICADA', '2014-01-15', '09:00:00', 1, '2', '3');
+INSERT INTO `CITA` VALUES (2, '16', 'PLANIFICADA', '2014-01-15', '09:00:00', 1, '2', '3');
+INSERT INTO `CITA` VALUES (3, '17', 'PLANIFICADA', '2014-01-15', '09:00:00', 1, '2', '3');
+INSERT INTO `CITA` VALUES (4, '18', 'PLANIFICADA', '2014-01-15', '09:00:00', 1, '2', '3');
 
 -- Farmacia con nif "33333333C" y contraseña "33333"
 INSERT INTO `FARMACIA` VALUES (4,'2013-11-24 01:04:42','33333333C','Farmacia de prueba','/QpUw+ZRH3ndoNb3N4gRpT5cz0C7pT9v','FARMACIA','2013-11-24 01:04:42',1,'12345','C/. farmacia, nº 2, 4º N','Coruña','Coruña');
 
-
+-- Tratamiento
+INSERT INTO `TRATAMIENTO` VALUES (1,'Hola que tal','2015-11-15','2014-01-15',1,'2','3');
