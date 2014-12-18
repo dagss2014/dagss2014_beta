@@ -183,7 +183,7 @@ public class PacienteControlador implements Serializable {
      
      public void doEliminar() {
         citaDAO.eliminar(citaActual);
-        citas = citaDAO.buscarPorPaciente(pacienteActual.getId()); // Actualizar lista de medicos
+        citas = citaDAO.buscarPorPaciente(pacienteActual.getId());
     }
      
 }
